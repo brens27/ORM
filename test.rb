@@ -13,7 +13,10 @@ end
 # #Probando initialize
 
 
-# #Probando create
-chef_marcos = Chef.create(first_name: "Marcos", last_name: "Diogo", email: "gdio@yahoo.com", phone: "1587832674", birthday: "1987-09-04")
+# # #Probando create
+chef_luigi = Chef.create(first_name: "Luigi", last_name: "Bros", email: "luigi@yahoo.com", phone: "1878329704", birthday: "1981-09-04")
 
+puts Chef.where("first_name=?", "Luigi")
+
+assert chef_luigi[:first_name] == "Luigi"
 puts "finished"

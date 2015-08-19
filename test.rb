@@ -4,19 +4,35 @@ def assert(truthy)
   raise "Tests failed" unless truthy
 end
 
-# chef = Chef.find(1)
+chef = Chef.find(1)
 
-# # Este es un ejemplo de test ya que los nombres de los chefs son aleatorios, este test muy probablemente fallará
-# assert chef[:first_name] == 'Freeda'
-# assert chef[:last_name] == 'Gleichner'
+chuf = Chef.all.first
+assert chuf[:first_name] == 'Adrian'
 
-# #Probando initialize
+assert chef[:first_name] == 'Adrian'
+assert chef[:last_name] == 'Little'
+
+chef_1 = Chef.create(first_name: "Ruben", last_name: "Rodriguez", email: "rub@yahoo.com", birthday: "1988-12-04", phone: "1234567890")
+
+assert chef_1[:first_name] == "Ruben"
+assert chef_1[:email] == "rub@yahoo.com"
+
+chef_where = Chef.where("first_name = ?", "Ruben").first
+# p chef_where[:first_name]
+
+assert chef_where[:first_name] == "Ruben"
 
 
-# # #Probando create
-chef_luigi = Chef.create(first_name: "Luigi", last_name: "Bros", email: "luigi@yahoo.com", phone: "1878329704", birthday: "1981-09-04")
+meal_1 = Meal.create(name: "Pozole", chef_id: 4)
 
-puts Chef.where("first_name=?", "Luigi")
+# meal_where = Meal.where("name=?", "Pozole").first
+# assert meal_where[:name] == "Pozole"
 
-assert chef_luigi[:first_name] == "Luigi"
+assert meal_1[:name] == "Pozole"
+assert meal_1[:chef_id] == 4
+
+chef_save = Chef.create(first_name: "Paola", last_name:"Garza", email: "pgarza@hotmail.com", birthday: "1988-11-03", phone: "1569874034")
+
+assert chef_save[:id] != nil
+
 puts "finished"

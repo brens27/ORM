@@ -8,7 +8,7 @@ class Meal < MiniActiveRecord::Model
   def self.create(attributes)
     record = self.new(attributes)
     record.save
-
+    
     record
   end
 
